@@ -106,9 +106,17 @@ Repository: **[https://github.com/oggy-and-the-cockroaches/h2s-vvit](https://git
 │       ├── resolution-verification.png
 │       └── public-transparency.png
 └── backend/                           # FastAPI backend service (Python)
-    ├── main.py                        # FastAPI application entrypoint & API routers
+    ├── run.py                         # One-click backend server runner
     ├── requirements.txt               # Python dependencies
-    └── README.md                      # Backend documentation
+    ├── README.md                      # Backend API documentation
+    └── app/
+        ├── main.py                    # FastAPI application entrypoint & static mount
+        ├── core/config.py             # Application settings & CORS
+        ├── models/schemas.py          # Pydantic schemas for incidents & verifications
+        ├── data/database.py           # In-memory realistic civic database
+        └── api/v1/
+            ├── router.py              # Central v1 route aggregator
+            └── endpoints/             # Triage, verification, transparency, and telemetry
 ```
 
 ---
@@ -136,12 +144,17 @@ npx serve .
 
 ## ⚙️ Running the FastAPI Backend
 
-A high-performance Python FastAPI backend provides REST endpoints for incident data, triage dispatch, cryptographic audit verification, and open datasets.
+A high-performance Python FastAPI backend provides REST endpoints for incident data, triage dispatch, cryptographic audit verification, WebSocket telemetry, and open datasets. When started, it also serves the frontend directly at `http://localhost:8000/`.
 
 ```bash
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
+# Install dependencies
+pip install -r backend/requirements.txt
+
+# Run server with runner script
+python backend/run.py
+
+# Or run with uvicorn directly
+uvicorn backend.app.main:app --reload --port 8000
 ```
 
 Interactive API documentation will be available at:
