@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"on-tertiary":"#003824","on-error":"#690005","primary":"#4cd7f6","primary-fixed-dim":"#4cd7f6","on-secondary":"#002e6a","surface-container-lowest":"#0a0e16","error-container":"#93000a","on-primary":"#003640","inverse-surface":"#dfe2ee","error":"#ffb4ab","on-secondary-fixed":"#001a42","tertiary-fixed-dim":"#4edea3","surface-container-high":"#262a33","on-primary-container":"#00424f","secondary-fixed":"#d8e2ff","on-tertiary-fixed-variant":"#005236","on-secondary-fixed-variant":"#004395","on-primary-fixed-variant":"#004e5c","background":"#0f131c","inverse-on-surface":"#2c3039","surface-bright":"#353942","on-tertiary-fixed":"#002113","primary-fixed":"#acedff","on-primary-fixed":"#001f26","surface-container-low":"#181c24","on-error-container":"#ffdad6","surface-dim":"#0f131c","on-surface":"#dfe2ee","secondary-container":"#0566d9","surface-container-highest":"#31353e","on-secondary-container":"#e6ecff","secondary":"#adc6ff","primary-container":"#06b6d4","inverse-primary":"#00687a","surface-variant":"#31353e","outline":"#869397","on-background":"#dfe2ee","surface-tint":"#4cd7f6","on-tertiary-container":"#00452e","on-surface-variant":"#bcc9cd","tertiary-container":"#1bbd85","tertiary-fixed":"#6ffbbe","outline-variant":"#3d494c","surface":"#0f131c","secondary-fixed-dim":"#adc6ff","surface-container":"#1c2028","tertiary":"#4edea3"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xs":"0.25rem","space-sm":"0.5rem","space-xl":"2rem","margin-desktop":"2rem","gutter":"1rem","space-lg":"1.5rem","margin":"1rem","space-2xl":"3rem","space-2xs":"0.125rem","gutter-desktop":"1.5rem","space-md":"1rem"},"fontFamily":{"label-caps":["JetBrains Mono"],"body-lg":["Inter"],"headline-lg":["Geist"],"telemetry-meta":["JetBrains Mono"],"body-md":["Inter"],"body-sm":["Inter"],"headline-md":["Geist"],"telemetry-value":["JetBrains Mono"],"headline-sm":["Geist"],"headline-xl-mobile":["Geist"],"headline-xl":["Geist"],"headline-lg-mobile":["Geist"]},"fontSize":{"label-caps":["0.6875rem",{"lineHeight":"1","letterSpacing":"0.08em","fontWeight":"600"}],"body-lg":["1.125rem",{"lineHeight":"1.6","letterSpacing":"0","fontWeight":"400"}],"headline-lg":["2.25rem",{"lineHeight":"1.2","letterSpacing":"-0.02em","fontWeight":"600"}],"telemetry-meta":["0.75rem",{"lineHeight":"1.3","letterSpacing":"0.04em","fontWeight":"500"}],"body-md":["0.9375rem",{"lineHeight":"1.5","letterSpacing":"0","fontWeight":"400"}],"body-sm":["0.8125rem",{"lineHeight":"1.45","letterSpacing":"0.005em","fontWeight":"400"}],"headline-md":["1.5rem",{"lineHeight":"1.3","letterSpacing":"-0.01em","fontWeight":"600"}],"telemetry-value":["1.25rem",{"lineHeight":"1.2","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-sm":["1.125rem",{"lineHeight":"1.4","letterSpacing":"-0.005em","fontWeight":"600"}],"headline-xl-mobile":["2rem",{"lineHeight":"1.2","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-xl":["3rem",{"lineHeight":"1.1","letterSpacing":"-0.03em","fontWeight":"700"}],"headline-lg-mobile":["1.5rem",{"lineHeight":"1.25","letterSpacing":"-0.01em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen"><header class="fixed top-0 left-0 right-0 h-14 bg-surface-container-lowest/95 backdrop-blur-md z-50 shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="h-14 w-full px-space-md flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="CivicPulse AI Emblem" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UXxPBiOEtEgr_bzwnKlszNaneJqf3mlOPvXUc0_YP7Apfb3AukiCXchBhbDf1cigzjq19LExR7pDe7NlXlVIpsa28OCmfaGzelMnUaSJrYx7PlxbqJWb8P_seuMtX3Kkr22X0ob57gcsbDzNbHTPQ0xCTuwTfWh3Lyj9LsXPlrghQMIYMou-HEfjMW5qpQ3W15yIIqPsCq8J4CfS4ysx3CQBWk1Wm-wkZ_2ybUkfch7LHCVF8LaWbtU3A"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface uppercase leading-none">CivicPulse AI</span><span class="font-label-caps text-label-caps text-outline uppercase mt-0.5 tracking-wider">Every report deserves a response</span></div></div><div class="hidden xl:flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1 rounded"><span class="material-symbols-outlined text-primary text-[16px]">corporate_fare</span><span class="font-telemetry-meta text-telemetry-meta text-on-surface font-semibold">Metro Central District 04</span><span class="font-telemetry-meta text-telemetry-meta text-outline">- Sector North</span><span class="material-symbols-outlined text-outline text-[16px] cursor-pointer hover:text-on-surface">unfold_more</span></div></div><div class="hidden lg:flex items-center gap-space-sm bg-surface-container-lowest px-space-sm py-1 rounded"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span><span class="font-label-caps text-label-caps text-tertiary tracking-wider uppercase">SYSTEM ACTIVE</span></div><span class="text-outline text-xs">•</span><span class="font-telemetry-meta text-telemetry-meta text-on-surface-variant">AI PIPELINE 99.8%</span><span class="text-outline text-xs">•</span><span class="font-label-caps text-label-caps text-primary tracking-wider uppercase">DUAL-VERIFIED</span></div><div class="flex items-center gap-space-md"><div class="relative hidden md:flex items-center"><div class="absolute left-space-sm text-outline flex items-center pointer-events-none"><span class="material-symbols-outlined text-[18px]">search</span></div><input class="w-64 bg-surface-container-low font-body-sm text-body-sm text-on-surface placeholder:text-outline pl-8 pr-12 py-1 rounded focus:outline-none focus:bg-surface-container transition-all" placeholder="Search incidents, units, telemetry..." type="text"/><span class="absolute right-space-xs font-telemetry-meta text-[10px] text-outline bg-surface-container px-1.5 py-0.5 rounded tracking-widest font-semibold pointer-events-none">⌘K</span></div><div class="relative flex items-center justify-center"><button aria-label="Notifications" class="p-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors relative"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded bg-error-container text-on-error font-telemetry-meta text-[10px] font-bold ring-1 ring-background">3</span></button></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="hidden xl:flex flex-col text-left"><span class="font-telemetry-meta text-telemetry-meta text-on-surface font-semibold leading-tight">Dir. E. Vance</span><span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Operational Command</span></div></div></div></div></header><aside class="fixed left-0 top-14 h-[calc(100vh-3.5rem)] w-64 bg-surface-container-lowest z-40 flex flex-col justify-between py-space-sm"><div class="flex flex-col space-y-space-md"><div class="px-space-md pt-space-xs"><div class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Operational Rail</div></div><nav class="flex flex-col gap-0.5 px-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="overview" href="#"><span class="material-symbols-outlined text-[18px]">dashboard</span>Command Center</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="live-incidents" href="#"><span class="material-symbols-outlined text-[18px]">emergency</span>Live Incidents</a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-2 rounded transition-colors bg-primary-container text-on-primary-container font-semibold" data-path="incident-intelligence" href="#"><span class="material-symbols-outlined text-[18px]">neurology</span>Incident Intelligence</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="citizen-portal" href="#"><span class="material-symbols-outlined text-[18px]">public</span>Citizen Portal</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="resolution-verification" href="#"><span class="material-symbols-outlined text-[18px]">verified</span>Resolution Verification</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="transparency-and-impact" href="#"><span class="material-symbols-outlined text-[18px]">query_stats</span>Transparency &amp; Impact</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="impact-replay" href="#"><span class="material-symbols-outlined text-[18px]">history</span>Impact Replay</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[18px]">settings</span>Settings</a></nav></div><div class="px-space-md py-space-sm bg-surface-container-low/50 mx-space-xs rounded flex flex-col gap-1"><div class="flex items-center justify-between font-label-caps text-label-caps text-outline"><span class="uppercase">Telemetry Sync</span><span class="text-tertiary">42.8 MS</span></div><div class="flex items-center justify-between font-label-caps text-label-caps text-outline"><span class="uppercase">Node Cluster</span><span class="text-on-surface-variant">N-ALPHA-09</span></div></div></aside><div class="pl-64"><main class="relative pt-14 w-full bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Tactical Ribbon Top Banner -->
+<div class="bg-surface-container-lowest px-space-md py-space-sm flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="flex items-center gap-1.5 font-telemetry-meta text-telemetry-meta text-outline">
+<span class="hover:text-primary cursor-pointer transition-colors">INCIDENTS</span>
+<span class="text-outline-variant">/</span>
+<span class="hover:text-primary cursor-pointer transition-colors">WARD 04</span>
+<span class="text-outline-variant">/</span>
+<span class="text-primary font-semibold">#CP-8492</span>
+</div>
+<div class="h-3 w-px bg-surface-container-highest mx-space-2xs"></div>
+<div class="flex items-center gap-1.5 bg-error-container/20 px-2 py-0.5 rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-ping"></span>
+<span class="font-label-caps text-label-caps text-error tracking-wider uppercase">TIER 1 CRITICAL</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded text-secondary font-telemetry-meta text-telemetry-meta">
+<span class="material-symbols-outlined text-[14px]">cell_tower</span>
+<span>RADIAL CLUSTER #CL-092</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-1 text-outline font-telemetry-meta text-telemetry-meta">
+<span class="material-symbols-outlined text-[15px] text-tertiary">fingerprint</span>
+<span class="text-on-surface-variant font-mono">HASH: 9e4f..88c1</span>
+</div>
+<button class="px-space-sm py-1 bg-surface-container-high hover:bg-surface-container-highest text-on-surface text-body-sm font-label-caps uppercase tracking-wider rounded transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+        Export Dossier
+      </button>
+</div>
+</div>
+<!-- Incident Identity & Triage Header Box -->
+<div class="bg-surface-container-low px-space-md py-space-md shadow-md">
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<div class="space-y-space-xs max-w-4xl">
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="bg-secondary-container/20 text-secondary font-label-caps text-label-caps px-2 py-0.5 rounded uppercase tracking-widest font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+            DISPATCHED - RAPID RESPONSE EN ROUTE
+          </span>
+<span class="bg-surface-container-highest text-primary font-telemetry-meta text-telemetry-meta px-2 py-0.5 rounded">
+            INCIDENT ID: CP-8492
+          </span>
+<span class="text-outline font-telemetry-meta text-telemetry-meta flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+            OPENED 08:42:19 EST (16m AGO)
+          </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight leading-tight">
+          Exposed High-Voltage Utility Cable &amp; Damaged Conduit
+        </h1>
+<div class="flex flex-wrap items-center gap-space-md text-on-surface-variant font-telemetry-meta text-telemetry-meta">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span class="font-semibold">Corner Belmont Ave &amp; N 12th St, Metro District 04</span>
+</div>
+<div class="flex items-center gap-1 font-mono text-outline">
+<span>GEO: 42.36012° N, 71.05889° W</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded text-tertiary">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+<span>6 CORROBORATING EYEWITNESSES</span>
+</div>
+</div>
+</div>
+<!-- Action Panel Buttons -->
+<div class="flex flex-wrap items-center gap-space-sm xl:self-center">
+<button class="px-space-md py-2.5 bg-primary hover:bg-primary-fixed-dim text-on-primary font-headline-sm text-body-sm font-semibold rounded shadow-[0_0_12px_rgba(76,215,246,0.35)] transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>Begin Field Resolution</span>
+</button>
+<button class="px-space-sm py-2.5 bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-body-sm font-medium rounded transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">swap_horiz</span>
+<span>Reassign Crew</span>
+</button>
+<button class="px-space-sm py-2.5 bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface rounded transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">note_add</span>
+<span class="font-body-sm">Add Note</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Body Grid: 12-Column Responsive Workspace -->
+<div class="p-space-md grid grid-cols-1 xl:grid-cols-12 gap-space-md">
+<!-- LEFT 8 COLUMNS: Forensic Evidence, AI Decomposition, Multi-Report Synthesis -->
+<div class="xl:col-span-8 flex flex-col gap-space-md">
+<!-- Primary Photographic Evidence & Crosshair Metadata Engine -->
+<div class="bg-surface-container-low rounded-lg p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">document_scanner</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface uppercase tracking-wide">
+              Primary Visual Forensic Submission
+            </h2>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="bg-surface-container-high text-tertiary font-label-caps text-label-caps px-2 py-0.5 rounded uppercase">
+              EXIF Geoverified
+            </span>
+<span class="bg-primary/20 text-primary font-label-caps text-label-caps px-2 py-0.5 rounded uppercase font-mono">
+              CONF: 98.2%
+            </span>
+</div>
+</div>
+<!-- High Resolution Visual Container -->
+<div class="relative w-full aspect-[16/9] bg-surface-container-lowest rounded overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.01]" data-alt="Close-up forensic photograph of an outdoor municipal sidewalk with an exposed high-voltage electrical cable severed from a metal utility conduit. Visible blue and orange sparks emit from the shredded insulating sheath near a street curb puddle on Belmont Avenue. Moody morning rain atmosphere, deep shadows, urban street setting with sharp industrial clarity and cyan emergency reflection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcYQE6y9V7qneFmJrQ8q9lX0xSxUA7vCqVDo_Q8YJEB2IbADu844ey_BFDyNWT2HZvu5hJLONLbE6AyllB16K6rUMM9NQY17mFUDhUYu9JqDFmN1oq0vP0du4KpUC_e-pj-bTXyXcXQpt9x8NM5daBRoBrWzGMG9lVqAlH807OCiky_SFpaYBJGjptSMZyelDRt0Z7tEch7VNrhWb6zs1YKIcO5ociVMUQkC8PNgM7HwMrj2lYl1yr"/>
+<!-- Tactical Coordinate HUD Overlays -->
+<div class="absolute inset-0 pointer-events-none p-space-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="bg-surface-container-lowest/90 backdrop-blur-sm px-2.5 py-1.5 rounded flex flex-col font-mono text-[11px] text-primary gap-0.5">
+<span class="font-bold text-on-surface">LOCATOR: #CAM-MOB-4921</span>
+<span class="text-outline">FRAME RATIO: 16:9 • SPECTRAL: VIS</span>
+<span class="text-tertiary">THERMAL SIGNATURE: HAZARD DETECTED</span>
+</div>
+<div class="bg-error-container/90 text-on-error px-2 py-1 rounded font-label-caps text-label-caps flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                LIVE VOLTAGE HAZARD
+              </div>
+</div>
+<!-- Target Crosshair Bounding Box Mock -->
+<div class="self-center w-48 h-36 border border-primary/60 bg-primary/10 relative rounded flex flex-col justify-between p-1.5">
+<div class="flex justify-between items-start font-mono text-[9px] text-primary">
+<span>OBJ_01: CONDUCTOR</span>
+<span>480V_EST</span>
+</div>
+<div class="self-end bg-surface-container-lowest/90 px-1 py-0.5 font-mono text-[9px] text-on-surface rounded">
+                ARC DETECTED [P=0.98]
+              </div>
+</div>
+<!-- Footer Data Strip -->
+<div class="bg-surface-container-lowest/95 backdrop-blur-md p-space-sm rounded flex flex-wrap items-center justify-between gap-space-sm font-telemetry-meta text-telemetry-meta">
+<div class="flex items-center gap-space-sm">
+<span class="text-on-surface font-semibold">Captured: Today 08:42:19 AM EST</span>
+<span class="text-outline">•</span>
+<span class="text-on-surface-variant font-mono">EXIF: Lat 42.36012, Lon -71.05889 (±1.8m)</span>
+</div>
+<div class="flex items-center gap-space-sm font-mono text-outline">
+<span class="text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span> SHA-256 VALID
+                </span>
+<span>CAM: iOS-Direct-Ingest</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Sensor Array & Ingestion Data -->
+<div class="mt-space-sm grid grid-cols-2 md:grid-cols-4 gap-space-sm">
+<div class="bg-surface-container p-space-sm rounded">
+<span class="font-label-caps text-label-caps text-outline uppercase block">Ambient Moisture</span>
+<span class="font-telemetry-value text-telemetry-value text-error">82% RH</span>
+<span class="font-telemetry-meta text-telemetry-meta text-on-surface-variant block mt-0.5">High Arc Conductive</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded">
+<span class="font-label-caps text-label-caps text-outline uppercase block">Conduit Integrity</span>
+<span class="font-telemetry-value text-telemetry-value text-error">CRUSHED</span>
+<span class="font-telemetry-meta text-telemetry-meta text-on-surface-variant block mt-0.5">Physical Shear Force</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded">
+<span class="font-label-caps text-label-caps text-outline uppercase block">Infrastructure Pole</span>
+<span class="font-telemetry-value text-telemetry-value text-primary">#T-4091</span>
+<span class="font-telemetry-meta text-telemetry-meta text-on-surface-variant block mt-0.5">Grid Feeder 14B</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded">
+<span class="font-label-caps text-label-caps text-outline uppercase block">Pedestrian Risk</span>
+<span class="font-telemetry-value text-telemetry-value text-error">CRITICAL</span>
+<span class="font-telemetry-meta text-telemetry-meta text-on-surface-variant block mt-0.5">School Transit Zone</span>
+</div>
+</div>
+</div>
+<!-- AI Triage & Priority Explainability Breakdown -->
+<div class="bg-surface-container-low rounded-lg p-space-md shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">psychology</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">
+                Algorithmic Priority Score: 94 / 100
+              </h2>
+<span class="font-telemetry-meta text-telemetry-meta text-outline">
+                CivicPulse Autonomous Weighting Model v4.8 • Explainability Matrix
+              </span>
+</div>
+</div>
+<div class="bg-error-container/20 px-3 py-1 rounded text-error font-mono text-sm font-bold self-start sm:self-auto flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+            TIER-1 AUTOMATIC ESCALATION
+          </div>
+</div>
+<!-- Scoring Breakdown Contiguous Bars -->
+<div class="space-y-space-md">
+<!-- Factor 1 -->
+<div>
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-body-md text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-error">flash_on</span>
+                Composite Safety Urgency
+              </span>
+<span class="font-telemetry-value text-body-sm font-bold text-error">40 / 40 PTS</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 100%"></div>
+</div>
+<p class="font-telemetry-meta text-telemetry-meta text-on-surface-variant mt-1">
+              Active live voltage risk identified within 15 meters of unbarricaded municipal pedestrian sidewalk.
+            </p>
+</div>
+<!-- Factor 2 -->
+<div>
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-body-md text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">groups</span>
+                Community Impact &amp; Foot Traffic Density
+              </span>
+<span class="font-telemetry-value text-body-sm font-bold text-primary">24 / 25 PTS</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 96%"></div>
+</div>
+<p class="font-telemetry-meta text-telemetry-meta text-on-surface-variant mt-1">
+              High-density zone: Morning school commute corridor and transit transfer hub within 75m perimeter.
+            </p>
+</div>
+<!-- Factor 3 -->
+<div>
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-body-md text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">hourglass_top</span>
+                Waiting Duration Escalation Risk
+              </span>
+<span class="font-telemetry-value text-body-sm font-bold text-secondary">15 / 15 PTS</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 100%"></div>
+</div>
+<p class="font-telemetry-meta text-telemetry-meta text-on-surface-variant mt-1">
+              Exceeds 15-minute threshold for uncontained Tier-1 municipal electrical safety exposure.
+            </p>
+</div>
+<!-- Factor 4 -->
+<div>
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-body-md text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary">fact_check</span>
+                Corroborating Evidence Concordance
+              </span>
+<span class="font-telemetry-value text-body-sm font-bold text-tertiary">15 / 20 PTS</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 75%"></div>
+</div>
+<p class="font-telemetry-meta text-telemetry-meta text-on-surface-variant mt-1">
+              6 synchronized citizen reports, 4 photographic viewpoints, matching optical telemetry on pole #T-4091.
+            </p>
+</div>
+</div>
+<!-- Uncertainty Disclaimer Note -->
+<div class="mt-space-md p-space-sm bg-surface-container-high/60 rounded flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-outline text-[18px] shrink-0 mt-0.5">info</span>
+<div class="text-body-sm font-telemetry-meta text-outline">
+<span class="text-on-surface font-semibold">Triage Uncertainty Advisory:</span> Physical thermal core imaging unverified via SCADA sensor; ambient rainfall projection (82% probability) increases electrocution hazard radius by up to 4.2x along street drainage gutters.
+          </div>
+</div>
+</div>
+<!-- Consolidated Citizen Reports Grid -->
+<div class="bg-surface-container-low rounded-lg p-space-md shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs mb-space-md">
+<div>
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">hub</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">
+                Consolidated Citizen Reports (6 Unique Submissions)
+              </h2>
+</div>
+<span class="font-telemetry-meta text-telemetry-meta text-outline mt-0.5 block">
+              Deduplicated &amp; grouped into single actionable master incident record
+            </span>
+</div>
+<span class="font-label-caps text-label-caps text-tertiary bg-surface-container-high px-2 py-1 rounded">
+            94.7% EMBEDDING SIMILARITY
+          </span>
+</div>
+<!-- Deduplication Rationale Callout -->
+<div class="p-space-sm bg-surface-container rounded mb-space-md flex items-center gap-space-sm text-body-sm">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0">auto_awesome</span>
+<p class="font-telemetry-meta text-telemetry-meta text-on-surface-variant">
+<strong class="text-on-surface">AI Deduplication Engine:</strong> Clustered via spatio-temporal radius (18m radius within 15-minute window) + multi-angle visual feature embedding similarity (94.7% vector match on utility pole #T-4091).
+          </p>
+</div>
+<!-- Citizen Voice Report Cards Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm">
+<!-- Card 1 (Anchor) -->
+<div class="bg-surface-container p-space-sm rounded flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<div>
+<div class="flex items-center justify-between font-telemetry-meta text-telemetry-meta mb-space-xs">
+<span class="text-primary font-bold">#CIT-10492</span>
+<span class="text-outline">08:42:19 AM</span>
+</div>
+<p class="font-body-md text-on-surface italic mb-space-sm">
+                "Wire sparking on the sidewalk right outside the bakery! Kids walking to school nearby."
+              </p>
+</div>
+<div class="flex items-center justify-between pt-space-xs border-t border-surface-container-highest">
+<div class="flex items-center gap-1.5">
+<div class="w-12 h-8 rounded overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Small thumbnail photo showing an electrical wire sparking on a municipal concrete sidewalk next to a brick storefront building during morning rush hour." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-TTtKM2-YmgCjqY4w1jsdElS3EQUaWJp3HZOJGTvy1ihKNck6cmEOzgmwkry7EiUwyVfAINrt5UuVtHHW-DpgG2uPh4IKM4iOMjNqrx4HSgwOQ6zBapqanD0FU2FRs1fQ_1UYre14YJbwCajuXUN5V6C4WmY6Dq5VC9H7F_g7DJyG12d7NS0luYC2HM1FSnwew7c5--6UbQgkXuB-AZtdaKUOcwi66meQczgBWotYt7NoeYh1cKIk"/>
+</div>
+<span class="font-label-caps text-label-caps text-outline uppercase">Photo #1 Attached</span>
+</div>
+<span class="font-telemetry-meta text-telemetry-meta text-tertiary bg-surface-container-lowest px-1.5 py-0.5 rounded">ORIGIN ANCHOR</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container p-space-sm rounded flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<div>
+<div class="flex items-center justify-between font-telemetry-meta text-telemetry-meta mb-space-xs">
+<span class="text-primary font-bold">#CIT-10495</span>
+<span class="text-outline">08:46:02 AM</span>
+</div>
+<p class="font-body-md text-on-surface italic mb-space-sm">
+                "Black thick cable hanging off the transformer pole down to the street curb."
+              </p>
+</div>
+<div class="flex items-center justify-between pt-space-xs border-t border-surface-container-highest">
+<div class="flex items-center gap-1.5">
+<div class="w-12 h-8 rounded overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Vertical perspective thumbnail showing an overhead utility transformer pole with a loose severed heavy black electrical feeder line dropping downward." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD38JoSnXskyx_qssBKpGUyNvSOp63lHOeSeAaC3mLWmt2qgr5VgJ9ldefXdzPMhrgijJbHdkGNOuSedaX42bbgMjTZMOuxy8NSzDFfjEmuTt4yEoUBCgwUr9HWBJUoMAopXHQj818KQhW1HiqPFcJ9o6s4SpfxWYZB2LrsJ3yHsAZEocKvINESLvfi7_Nh-lLwhpWiuRG3Q4ViNZuBXixsn1xCQ0vnUxWGrbsh17ChL0hoN6hrOjeH"/>
+</div>
+<span class="font-label-caps text-label-caps text-outline uppercase">Photo #2 Attached</span>
+</div>
+<span class="font-telemetry-meta text-telemetry-meta text-secondary bg-surface-container-lowest px-1.5 py-0.5 rounded">POLE #T-4091 CONFIRMED</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container p-space-sm rounded flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<div>
+<div class="flex items-center justify-between font-telemetry-meta text-telemetry-meta mb-space-xs">
+<span class="text-primary font-bold">#CIT-10501</span>
+<span class="text-outline">08:51:14 AM</span>
+</div>
+<p class="font-body-md text-on-surface italic mb-space-sm">
+                "Dangerous wire on Belmont sidewalk. People are walking around it into the road traffic."
+              </p>
+</div>
+<div class="flex items-center justify-between pt-space-xs border-t border-surface-container-highest">
+<span class="font-label-caps text-label-caps text-outline uppercase">Text Only Dispatch</span>
+<span class="font-telemetry-meta text-telemetry-meta text-on-surface-variant bg-surface-container-lowest px-1.5 py-0.5 rounded">MERGED VIA GPS (Δ 6m)</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container p-space-sm rounded flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<div>
+<div class="flex items-center justify-between font-telemetry-meta text-telemetry-meta mb-space-xs">
+<span class="text-primary font-bold">#CIT-10508</span>
+<span class="text-outline">08:55:40 AM</span>
+</div>
+<p class="font-body-md text-on-surface italic mb-space-sm">
+                "Electrical hazard, burning smoke smell near corner of 12th St intersection."
+              </p>
+</div>
+<div class="flex items-center justify-between pt-space-xs border-t border-surface-container-highest">
+<span class="font-label-caps text-label-caps text-error uppercase">Odor Signature: Ozone</span>
+<span class="font-telemetry-meta text-telemetry-meta text-on-surface-variant bg-surface-container-lowest px-1.5 py-0.5 rounded">MERGED VIA GPS (Δ 11m)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT 4 COLUMNS: Unit Dispatch Ops, Map Telemetry, & Immutable Audit Trail -->
+<div class="xl:col-span-4 flex flex-col gap-space-md">
+<!-- Operations & Crew Assignment Card -->
+<div class="bg-surface-container-low rounded-lg p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">local_shipping</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">
+              Municipal Field Unit
+            </h2>
+</div>
+<span class="bg-tertiary-container/20 text-tertiary font-label-caps text-label-caps px-2 py-0.5 rounded uppercase font-semibold">
+            EN ROUTE
+          </span>
+</div>
+<div class="bg-surface-container p-space-sm rounded mb-space-sm">
+<div class="font-telemetry-meta text-telemetry-meta text-outline">LEAD DEPARTMENT</div>
+<div class="font-headline-sm text-body-md font-semibold text-on-surface">Municipal Power &amp; Grid Infrastructure</div>
+<div class="font-telemetry-meta text-telemetry-meta text-primary mt-0.5">Heavy Emergency Utility Squad #04</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm mb-space-sm font-telemetry-meta text-telemetry-meta">
+<div class="bg-surface-container p-space-sm rounded">
+<span class="text-outline block uppercase font-label-caps text-label-caps">Field Lead</span>
+<span class="font-semibold text-on-surface">Foreman J. Delgado</span>
+<span class="text-on-surface-variant block mt-0.5">2 Line Technicians</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded">
+<span class="text-outline block uppercase font-label-caps text-label-caps">Est. Arrival</span>
+<span class="font-telemetry-value text-body-lg font-bold text-primary">04 MIN</span>
+<span class="text-tertiary block mt-0.5 font-mono">GPS Ping: 0.7 mi</span>
+</div>
+</div>
+<!-- Live Dispatch Checklist -->
+<div class="space-y-2 mt-space-sm">
+<div class="font-label-caps text-label-caps text-outline uppercase tracking-wider mb-1">
+            Standard Mitigation Procedure
+          </div>
+<label class="flex items-center gap-space-sm p-2 rounded bg-surface-container cursor-pointer hover:bg-surface-container-high transition-colors">
+<input checked="" class="w-4 h-4 rounded bg-primary text-on-primary accent-primary" disabled="" type="checkbox"/>
+<div class="text-body-sm font-body-sm text-on-surface flex items-center justify-between w-full">
+<span>Remote grid isolation requested</span>
+<span class="font-mono text-tertiary text-xs">08:44:00 AM</span>
+</div>
+</label>
+<label class="flex items-center gap-space-sm p-2 rounded bg-surface-container cursor-pointer hover:bg-surface-container-high transition-colors">
+<input checked="" class="w-4 h-4 rounded bg-primary text-on-primary accent-primary" disabled="" type="checkbox"/>
+<div class="text-body-sm font-body-sm text-on-surface flex items-center justify-between w-full">
+<span>Traffic safety perimeter cones dispatched</span>
+<span class="font-mono text-tertiary text-xs">08:48:15 AM</span>
+</div>
+</label>
+<label class="flex items-center gap-space-sm p-2 rounded bg-surface-container cursor-pointer hover:bg-surface-container-high transition-colors">
+<input class="w-4 h-4 rounded bg-surface-container-highest accent-primary" type="checkbox"/>
+<div class="text-body-sm font-body-sm text-on-surface-variant flex items-center justify-between w-full">
+<span>Conductor physical grounding verification</span>
+<span class="font-mono text-outline text-xs">PENDING CREW</span>
+</div>
+</label>
+<label class="flex items-center gap-space-sm p-2 rounded bg-surface-container cursor-pointer hover:bg-surface-container-high transition-colors">
+<input class="w-4 h-4 rounded bg-surface-container-highest accent-primary" type="checkbox"/>
+<div class="text-body-sm font-body-sm text-on-surface-variant flex items-center justify-between w-full">
+<span>Conduit sleeve replacement &amp; street seal</span>
+<span class="font-mono text-outline text-xs">PENDING CREW</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Tactical Geographic Context Card -->
+<div class="bg-surface-container-low rounded-lg p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">map</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">
+              Micro-Spatial Grid
+            </h2>
+</div>
+<span class="font-telemetry-meta text-telemetry-meta text-primary font-mono">SECTOR NORTH-04</span>
+</div>
+<div class="w-full h-44 rounded bg-cover bg-center relative overflow-hidden flex flex-col justify-between p-space-sm" data-location="Corner of Belmont Ave and N 12th St, Metro District 04" style="background-image: url('https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg')">
+<div class="flex justify-between items-start">
+<div class="bg-surface-container-lowest/90 px-2 py-0.5 rounded font-mono text-[10px] text-tertiary">
+              GPS CONVERGENCE: 6 CITIZEN NODES
+            </div>
+<div class="w-3 h-3 bg-error rounded-full animate-ping"></div>
+</div>
+<div class="bg-surface-container-lowest/90 backdrop-blur-md p-1.5 rounded flex items-center justify-between font-mono text-[10px] text-on-surface">
+<span>PERIMETER: 18m CLUSTER</span>
+<span class="text-primary">UNIT 04: DISTANCE 0.7mi</span>
+</div>
+</div>
+</div>
+<!-- Persistent Immutable Audit Trail Sidebar -->
+<div class="bg-surface-container-low rounded-lg p-space-md shadow-sm flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">history_toggle_off</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">
+                Immutable Audit Trail
+              </h2>
+</div>
+<span class="font-label-caps text-label-caps text-tertiary bg-surface-container px-2 py-0.5 rounded uppercase">
+              Chain-Synced
+            </span>
+</div>
+<!-- Chronological Pipeline Nodes -->
+<div class="relative pl-6 space-y-space-md">
+<!-- Continuous Hairline Spine -->
+<div class="absolute left-2 top-1.5 bottom-1.5 w-px bg-surface-container-highest"></div>
+<!-- Log 1 -->
+<div class="relative">
+<div class="absolute -left-[23px] top-1 w-2.5 h-2.5 rounded-full bg-primary ring-4 ring-surface-container-low"></div>
+<div class="font-telemetry-meta text-telemetry-meta text-outline mb-0.5">08:42:19 AM EST</div>
+<div class="font-body-sm text-body-sm font-semibold text-on-surface">First Report Ingested</div>
+<p class="font-telemetry-meta text-telemetry-meta text-on-surface-variant">Citizen #CIT-10492 submitted photo via Civic Mobile App. Initial geo-tag resolved.</p>
+</div>
+<!-- Log 2 -->
+<div class="relative">
+<div class="absolute -left-[23px] top-1 w-2.5 h-2.5 rounded-full bg-tertiary ring-4 ring-surface-container-low"></div>
+<div class="font-telemetry-meta text-telemetry-meta text-outline mb-0.5">08:43:02 AM EST</div>
+<div class="font-body-sm text-body-sm font-semibold text-on-surface">AI Vision Telemetry Confirmed</div>
+<p class="font-telemetry-meta text-telemetry-meta text-on-surface-variant">Conductor shear identified with 98.2% confidence. Arc risk tagged.</p>
+</div>
+<!-- Log 3 -->
+<div class="relative">
+<div class="absolute -left-[23px] top-1 w-2.5 h-2.5 rounded-full bg-error ring-4 ring-surface-container-low"></div>
+<div class="font-telemetry-meta text-telemetry-meta text-outline mb-0.5">08:43:05 AM EST</div>
+<div class="font-body-sm text-body-sm font-semibold text-on-surface">Automated Priority 94 Assigned</div>
+<p class="font-telemetry-meta text-telemetry-meta text-on-surface-variant">Instant escalation trigger fired to Regional Operations Command.</p>
+</div>
+<!-- Log 4 -->
+<div class="relative">
+<div class="absolute -left-[23px] top-1 w-2.5 h-2.5 rounded-full bg-secondary ring-4 ring-surface-container-low"></div>
+<div class="font-telemetry-meta text-telemetry-meta text-outline mb-0.5">08:46:11 AM EST</div>
+<div class="font-body-sm text-body-sm font-semibold text-on-surface">Multi-Report Auto-Clustering</div>
+<p class="font-telemetry-meta text-telemetry-meta text-on-surface-variant">3 secondary reports merged. Spatio-temporal baseline matched.</p>
+</div>
+<!-- Log 5 -->
+<div class="relative">
+<div class="absolute -left-[23px] top-1 w-2.5 h-2.5 rounded-full bg-primary ring-4 ring-surface-container-low"></div>
+<div class="font-telemetry-meta text-telemetry-meta text-outline mb-0.5">08:48:00 AM EST</div>
+<div class="font-body-sm text-body-sm font-semibold text-on-surface">Dispatch Authorization</div>
+<p class="font-telemetry-meta text-telemetry-meta text-on-surface-variant">Dir. E. Vance dispatched Heavy Emergency Utility Squad #04.</p>
+</div>
+<!-- Log 6 -->
+<div class="relative">
+<div class="absolute -left-[23px] top-1 w-2.5 h-2.5 rounded-full bg-tertiary animate-pulse ring-4 ring-surface-container-low"></div>
+<div class="font-telemetry-meta text-telemetry-meta text-tertiary mb-0.5">08:52:30 AM EST (ACTIVE)</div>
+<div class="font-body-sm text-body-sm font-semibold text-on-surface">Crew En Route / ETA 4 MIN</div>
+<p class="font-telemetry-meta text-telemetry-meta text-on-surface-variant">Vehicle tracking transmitter active. Cones pre-staged.</p>
+</div>
+</div>
+</div>
+<!-- Cryptographic Ledger Verification Hash -->
+<div class="mt-space-md p-space-sm bg-surface-container rounded font-mono text-[10px] text-outline flex items-center justify-between">
+<span class="truncate">TX_BLOCK: #90428-A7-8492</span>
+<span class="text-tertiary shrink-0 ml-2">VERIFIED MERKLE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Utility Toast for Command Response (Vanilla JS toggleable) -->
+<div class="fixed bottom-6 right-6 z-50 hidden bg-surface-container-high text-on-surface border border-primary/30 p-space-md rounded-lg shadow-2xl max-w-sm" id="resolutionToast">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">electrical_services</span>
+<div>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface">Field Mitigation Initiated</h4>
+<p class="font-body-sm text-on-surface-variant text-xs mt-1">Conductor isolation telemetry pushed to Foreman J. Delgado. Citizen alerts updated.</p>
+</div>
+<button class="text-outline hover:text-on-surface" onclick="document.getElementById('resolutionToast').classList.add('hidden')">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<script>
+    // Micro-interaction handlers for Operations Workspace
+    document.addEventListener('DOMContentLoaded', () => {
+      const resolveBtn = document.querySelector('button:has(span:contains("Begin Field Resolution")), button');
+      const toast = document.getElementById('resolutionToast');
+      
+      // Wire any primary actions to demonstrate dynamic responsive command behavior
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(btn => {
+        if (btn.innerText.includes('Begin Field Resolution')) {
+          btn.addEventListener('click', () => {
+            if (toast) {
+              toast.classList.remove('hidden');
+              setTimeout(() => {
+                toast.classList.add('hidden');
+              }, 4000);
+            }
+          });
+        }
+      });
+    });
+  </script>
+</div></main></div></body></html>
