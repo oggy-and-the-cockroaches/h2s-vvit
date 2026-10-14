@@ -149,6 +149,13 @@
       </div>
 
       <div class="flex items-center gap-space-md">
+                <!-- 3-Minute Executive Judge Demo Tour Button -->
+        <button class="btn-judge-tour flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-primary/20 via-tertiary/20 to-secondary/20 hover:from-primary/30 hover:to-secondary/30 border border-primary/50 text-on-surface font-headline-sm text-xs font-bold transition-all shadow-[0_0_15px_rgba(76,215,246,0.25)] hover:shadow-[0_0_20px_rgba(76,215,246,0.45)] cursor-pointer group shrink-0" aria-label="Start 3-Minute Executive Judge Demo Tour (Alt + J)" title="Start 3-Minute Executive Judge Demo Tour (Alt + J)">
+          <span class="material-symbols-outlined text-primary text-[18px] group-hover:scale-110 transition-transform animate-pulse" aria-hidden="true">play_circle</span>
+          <span class="text-primary font-bold tracking-wide">Judge Tour</span>
+          <span class="hidden sm:inline-block px-1.5 py-0.2 bg-primary/20 text-primary text-[10px] font-mono rounded border border-primary/30 font-semibold">3 MIN</span>
+        </button>
+
         <div class="relative hidden md:flex items-center cursor-pointer">
           <label for="incidentHeaderSearch" class="sr-only">Search incidents, units, telemetry</label>
           <div class="absolute left-space-sm text-outline flex items-center pointer-events-none">
@@ -352,7 +359,7 @@
               </div>
 
               <!-- High Resolution Visual Container -->
-              <div class="relative w-full aspect-[16/9] bg-surface-container-lowest rounded overflow-hidden group border border-surface-container-high">
+              <div id="forensicViewportContainer" class="relative w-full aspect-[16/9] bg-surface-container-lowest rounded overflow-hidden group border border-surface-container-high">
                 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.01]" alt="Close-up forensic photograph of an outdoor municipal sidewalk with an exposed high-voltage electrical cable severed from a metal utility conduit." loading="eager" decoding="async" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcYQE6y9V7qneFmJrQ8q9lX0xSxUA7vCqVDo_Q8YJEB2IbADu844ey_BFDyNWT2HZvu5hJLONLbE6AyllB16K6rUMM9NQY17mFUDhUYu9JqDFmN1oq0vP0du4KpUC_e-pj-bTXyXcXQpt9x8NM5daBRoBrWzGMG9lVqAlH807OCiky_SFpaYBJGjptSMZyelDRt0Z7tEch7VNrhWb6zs1YKIcO5ociVMUQkC8PNgM7HwMrj2lYl1yr"/>
                 <!-- Tactical Coordinate HUD Overlays -->
                 <div class="absolute inset-0 pointer-events-none p-space-sm flex flex-col justify-between">
@@ -814,5 +821,6 @@
     });
   </script>
   <script src="js/app.js"></script>
+  <script src="js/tour.js"></script>
 </body>
 </html>
