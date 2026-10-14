@@ -1,0 +1,114 @@
+/* CivicPulse AI Operations Platform - Core Design & Utility Styles */
+:root {
+  --color-surface: #0f131c;
+  --color-surface-dim: #0f131c;
+  --color-surface-bright: #353942;
+  --color-surface-lowest: #0a0e16;
+  --color-surface-low: #181c24;
+  --color-surface-container: #1c2028;
+  --color-surface-high: #262a33;
+  --color-surface-highest: #31353e;
+  --color-on-surface: #dfe2ee;
+  --color-on-surface-variant: #bcc9cd;
+  --color-primary: #4cd7f6;
+  --color-on-primary: #003640;
+  --color-primary-container: #06b6d4;
+  --color-on-primary-container: #00424f;
+  --color-secondary: #adc6ff;
+  --color-tertiary: #4edea3;
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0e16;
+}
+::-webkit-scrollbar-thumb {
+  background: #262a33;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4cd7f6;
+}
+
+/* Base resets & typography smooth rendering */
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+body {
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Radar & Pulse Animations */
+@keyframes radarSweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-radar-sweep {
+  animation: radarSweep 6s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+.animate-glow-pulse {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Scanline visual effect for forensic views */
+.scanline-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Interactive Slider Enhancements */
+.comparison-slider-handle {
+  cursor: ew-resize;
+  touch-action: none;
+  user-select: none;
+}
+.comparison-slider-handle:hover div {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(76, 215, 246, 0.8);
+}
+
+/* Command Palette Backdrop */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Table Hover and Active Card transitions */
+.telemetry-card {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.telemetry-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(76, 215, 246, 0.4);
+}
+
+/* Badges */
+.badge-ping {
+  position: relative;
+  display: inline-flex;
+}
