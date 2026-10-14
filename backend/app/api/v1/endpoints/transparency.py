@@ -1,14 +1,27 @@
+"""
+CivicPulse AI Operations Platform - Civic Transparency & Open Data Endpoints.
+
+Provides public accountability trust metrics, live verified resolution stream,
+and RFC 7946 GeoJSON and CSV open data exports with ETag and Cache-Control headers.
+"""
+
 import csv
 import io
-from typing import List, Dict, Any
-from fastapi import APIRouter, Response
+import hashlib
+from typing import List
+from fastapi import APIRouter, Response, Request, status
 from backend.app.models.schemas import PublicTrustMetrics, Incident
 from backend.app.data.database import db
 
 router = APIRouter(prefix="/transparency", tags=["Public Transparency & Trust"])
 
-@router.get("/metrics", response_model=PublicTrustMetrics, summary="Get public accountability trust metrics")
-def get_public_trust_metrics():
+
+@router.get(
+    "/metrics",
+    response_model=PublicTrustMetrics,
+    summary="Get public accountability trust metrics"
+)
+def get_public_trust_metrics(response: Response):
     """
     Retrieve live municipal accountability metrics including:
     - 30-day verified resolution volume
@@ -16,22 +29,36 @@ def get_public_trust_metrics():
     - Taxpayer savings from automated deduplication
     - Departmental compliance percentages
     """
+    response.headers["Cache-Control"] = "public, max-age=60, stale-while-revalidate=120"
     return db.get_trust_metrics()
 
-@router.get("/feed", response_model=List[Incident], summary="Live resolution stream")
-def get_public_resolution_feed():
+
+@router.get(
+    "/feed",
+    response_model=List[Incident],
+    summary="Live resolution stream"
+)
+def get_public_resolution_feed(response: Response):
     """
     Continuous public stream of verified municipal resolutions with photographic proof.
     """
+    response.headers["Cache-Control"] = "public, max-age=30, stale-while-revalidate=60"
     return [
         inc for inc in db.incidents.values()
-        if inc.forensic_evidence is not None or inc.status.value in ("Verified Resolved", "Awaiting Verification", "In Mitigation")
+        if inc.forensic_evidence is not None or inc.status.value in (
+            "Verified Resolved", "Awaiting Verification", "In Mitigation"
+        )
     ]
 
-@router.get("/export/geojson", summary="Export incident dataset in GeoJSON RFC 7946 format")
-def export_geojson():
+
+@router.get(
+    "/export/geojson",
+    summary="Export incident dataset in GeoJSON RFC 7946 format"
+)
+def export_geojson(request: Request, response: Response):
     """
     Open data feed: Export all active and verified municipal incidents as GeoJSON FeatureCollection.
+    Includes ETag caching for zero-bandwidth 304 Not Modified responses.
     """
     features = []
     for inc in db.incidents.values():
@@ -65,12 +92,28 @@ def export_geojson():
         },
         "features": features
     }
+
+    # Generate deterministic ETag from incident IDs and states
+    raw_signature = ":".join(f"{f['properties']['id']}-{f['properties']['status']}" for f in features)
+    etag = f'"{hashlib.sha256(raw_signature.encode()).hexdigest()[:16]}"'
+
+    client_etag = request.headers.get("if-none-match")
+    if client_etag and client_etag == etag:
+        return Response(status_code=status.HTTP_304_NOT_MODIFIED)
+
+    response.headers["ETag"] = etag
+    response.headers["Cache-Control"] = "public, max-age=60"
     return geojson_data
 
-@router.get("/export/csv", summary="Download public ledger in CSV format")
-def export_csv():
+
+@router.get(
+    "/export/csv",
+    summary="Download public ledger in CSV format"
+)
+def export_csv(request: Request):
     """
     Open data feed: Download municipal resolution ledger in CSV format.
+    Includes deterministic ETag and attachment header.
     """
     output = io.StringIO()
     writer = csv.writer(output)
@@ -87,8 +130,18 @@ def export_csv():
         ])
 
     csv_content = output.getvalue()
+    etag = f'"{hashlib.sha256(csv_content.encode()).hexdigest()[:16]}"'
+
+    client_etag = request.headers.get("if-none-match")
+    if client_etag and client_etag == etag:
+        return Response(status_code=status.HTTP_304_NOT_MODIFIED)
+
     return Response(
         content=csv_content,
-        media_type="text/csv",
-        headers={"Content-Disposition": "attachment; filename=civicpulse_incidents.csv"}
+        media_type="text/csv; charset=utf-8",
+        headers={
+            "Content-Disposition": "attachment; filename=civicpulse_incidents.csv",
+            "ETag": etag,
+            "Cache-Control": "public, max-age=60"
+        }
     )

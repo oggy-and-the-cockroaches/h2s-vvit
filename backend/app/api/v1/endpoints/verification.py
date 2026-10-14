@@ -1,3 +1,9 @@
+"""
+CivicPulse AI Operations Platform - Resolution Verification Endpoints.
+
+Handles dual before/after forensic proof queries and statutory officer sign-off decisions.
+"""
+
 from typing import List
 from fastapi import APIRouter, HTTPException, status
 from backend.app.models.schemas import (
@@ -6,6 +12,7 @@ from backend.app.models.schemas import (
 from backend.app.data.database import db
 
 router = APIRouter(prefix="/verification", tags=["Resolution Verification"])
+
 
 @router.get("/pending", response_model=List[Incident], summary="List incidents awaiting verification")
 def list_pending_verifications():
@@ -17,6 +24,7 @@ def list_pending_verifications():
         if inc.status == IncidentStatus.AWAITING_VERIFICATION
     ]
 
+
 @router.get("/{incident_id}", response_model=ForensicEvidence, summary="Get forensic comparison evidence for incident")
 def get_forensic_evidence(incident_id: str):
     """
@@ -25,10 +33,17 @@ def get_forensic_evidence(incident_id: str):
     """
     incident = db.get_incident_by_id(incident_id)
     if not incident:
-        raise HTTPException(status_code=404, detail=f"Incident '{incident_id}' not found")
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Incident '{incident_id}' not found in active operational ledger"
+        )
     if not incident.forensic_evidence:
-        raise HTTPException(status_code=400, detail=f"Incident '{incident_id}' does not have forensic evidence submitted yet")
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Incident '{incident_id}' does not have forensic evidence submitted yet"
+        )
     return incident.forensic_evidence
+
 
 @router.post("/decision", response_model=DecisionResponse, summary="Submit officer sign-off decision")
 def submit_officer_decision(decision_req: DecisionRequest):
@@ -49,4 +64,7 @@ def submit_officer_decision(decision_req: DecisionRequest):
         )
         return response
     except ValueError as e:
-        raise HTTPException(status_code=404, detail=str(e))
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(e)
+        )

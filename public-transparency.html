@@ -4,6 +4,12 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <meta content="web_dashboard" name="shell-type"/>
+  <meta name="description" content="CivicPulse AI - Public civic transparency portal featuring tamper-evident cryptographic ledger, municipal SLA compliance metrics, and open GeoJSON/CSV datasets."/>
+  <meta name="theme-color" content="#0f131c"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta name="referrer" content="strict-origin-when-cross-origin"/>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
   <title>CivicPulse AI — Public Transparency &amp; Citizen Trust Portal</title>
 
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -110,13 +116,16 @@
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen">
+  <!-- Skip to main content for WCAG 2.1 AA accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
 
   <!-- ================= TOP HEADER NAVIGATION ================= -->
-  <header class="fixed top-0 left-0 right-0 h-14 bg-surface-container-lowest/95 backdrop-blur-md z-50 shadow-[0_1px_8px_rgba(0,0,0,0.4)] border-b border-surface-container-high/40">
+  <header role="banner" class="fixed top-0 left-0 right-0 h-14 bg-surface-container-lowest/95 backdrop-blur-md z-50 shadow-[0_1px_8px_rgba(0,0,0,0.4)] border-b border-surface-container-high/40">
     <div class="h-14 w-full px-space-md flex items-center justify-between gap-space-md">
       <div class="flex items-center gap-space-lg">
         <a href="index.html" class="flex items-center gap-space-sm group">
-          <img alt="CivicPulse AI Emblem" class="h-8 w-auto object-contain transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1UXxPBiOEtEgr_bzwnKlszNaneJqf3mlOPvXUc0_YP7Apfb3AukiCXchBhbDf1cigzjq19LExR7pDe7NlXlVIpsa28OCmfaGzelMnUaSJrYx7PlxbqJWb8P_seuMtX3Kkr22X0ob57gcsbDzNbHTPQ0xCTuwTfWh3Lyj9LsXPlrghQMIYMou-HEfjMW5qpQ3W15yIIqPsCq8J4CfS4ysx3CQBWk1Wm-wkZ_2ybUkfch7LHCVF8LaWbtU3A"/>
+          <img alt="CivicPulse AI Emblem" width="32" height="32" loading="eager" decoding="async" class="h-8 w-auto object-contain transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1UXxPBiOEtEgr_bzwnKlszNaneJqf3mlOPvXUc0_YP7Apfb3AukiCXchBhbDf1cigzjq19LExR7pDe7NlXlVIpsa28OCmfaGzelMnUaSJrYx7PlxbqJWb8P_seuMtX3Kkr22X0ob57gcsbDzNbHTPQ0xCTuwTfWh3Lyj9LsXPlrghQMIYMou-HEfjMW5qpQ3W15yIIqPsCq8J4CfS4ysx3CQBWk1Wm-wkZ_2ybUkfch7LHCVF8LaWbtU3A"/>
           <div class="flex flex-col">
             <span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface uppercase leading-none group-hover:text-primary transition-colors">CivicPulse AI</span>
             <span class="font-label-caps text-label-caps text-outline uppercase mt-0.5 tracking-wider">Every report deserves a response</span>
@@ -146,11 +155,12 @@
           <div class="absolute left-space-sm text-outline flex items-center pointer-events-none">
             <span class="material-symbols-outlined text-[18px]">search</span>
           </div>
-          <input class="w-64 bg-surface-container-low font-body-sm text-body-sm text-on-surface placeholder:text-outline pl-8 pr-12 py-1 rounded border border-surface-container-high focus:outline-none focus:border-primary transition-all cursor-pointer" placeholder="Search incidents, units, telemetry..." type="text"/>
+          <label for="public_transparencySearch" class="sr-only">Search incidents, units, telemetry</label>
+          <input id="public_transparencySearch" aria-label="Search incidents, units, and telemetry" class="w-64 bg-surface-container-low font-body-sm text-body-sm text-on-surface placeholder:text-outline pl-8 pr-12 py-1 rounded border border-surface-container-high focus:outline-none focus:border-primary transition-all cursor-pointer" placeholder="Search incidents, units, telemetry..." type="text"/>
           <span class="absolute right-space-xs font-telemetry-meta text-[10px] text-outline bg-surface-container px-1.5 py-0.5 rounded tracking-widest font-semibold pointer-events-none">⌘K</span>
         </div>
         <div class="relative flex items-center justify-center">
-          <button aria-label="Notifications" class="p-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors relative">
+          <button aria-label="Operational alerts (3 unread)" aria-expanded="false" aria-haspopup="true" class="p-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors relative">
             <span class="material-symbols-outlined text-[20px]">notifications</span>
             <span class="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded bg-error-container text-on-error font-telemetry-meta text-[10px] font-bold ring-1 ring-background">3</span>
           </button>
@@ -169,12 +179,12 @@
   </header>
 
   <!-- ================= SIDEBAR OPERATIONAL RAIL ================= -->
-  <aside class="fixed left-0 top-14 h-[calc(100vh-3.5rem)] w-64 bg-surface-container-lowest z-40 flex flex-col justify-between py-space-sm border-r border-surface-container-high/40">
+  <aside role="complementary" aria-label="Operational Navigation Rail" class="fixed left-0 top-14 h-[calc(100vh-3.5rem)] w-64 bg-surface-container-lowest z-40 flex flex-col justify-between py-space-sm border-r border-surface-container-high/40">
     <div class="flex flex-col space-y-space-md">
       <div class="px-space-md pt-space-xs">
         <div class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Operational Rail</div>
       </div>
-      <nav class="flex flex-col gap-0.5 px-space-xs" id="mainNav">
+      <nav role="navigation" aria-label="Main platform navigation" class="flex flex-col gap-0.5 px-space-xs" id="mainNav">
         <a href="index.html" class="nav-link flex items-center gap-space-sm px-space-sm py-2 rounded text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-page="index">
           <span class="material-symbols-outlined text-[18px]">dashboard</span>
           <span>Command Center</span>
@@ -226,7 +236,7 @@
 
   <!-- ================= MAIN TRANSPARENCY CANVAS ================= -->
   <div class="pl-64">
-    <main class="relative pt-14 w-full bg-surface min-h-screen">
+    <main id="main-content" role="main" class="relative pt-14 w-full bg-surface min-h-screen">
       <div class="flex flex-col w-full">
         <!-- Top Ambient Glow -->
         <div class="relative w-full overflow-hidden">
@@ -289,7 +299,7 @@
                 <!-- Main Search Bar -->
                 <div class="relative flex items-center w-full">
                   <span class="material-symbols-outlined absolute left-3.5 text-outline text-[20px]">search</span>
-                  <input class="w-full bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md pl-11 pr-28 py-2.5 rounded border border-surface-container-high focus:outline-none focus:border-primary transition-all" placeholder="Search public reports by incident ID (#CP-8461), cross-street (e.g. 5th &amp; Main), or keyword..." type="text"/>
+                  <input class="w-full bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md pl-11 pr-28 py-2.5 rounded border border-surface-container-high focus:outline-none focus:border-primary transition-all" id="publicSearchInput" aria-label="Search public reports by incident ID, cross-street, or keyword" placeholder="Search public reports by incident ID (#CP-8461), cross-street (e.g. 5th &amp; Main), or keyword..." type="text"/>
                   <span class="absolute right-3 font-telemetry-meta text-telemetry-meta text-outline bg-surface-container px-2 py-1 rounded hidden sm:inline-block border border-surface-container-high">
                     PRESS &crarr; TO QUERY
                   </span>
@@ -464,7 +474,7 @@
                   <!-- Right side: Visual Verification Thumbnail & Action -->
                   <div class="flex flex-col items-center md:items-end justify-between w-full md:w-auto shrink-0 gap-3">
                     <a href="resolution-verification.html" class="relative w-full sm:w-48 h-28 rounded overflow-hidden bg-surface-container-lowest group block border border-surface-container-high">
-                      <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3JyAUX-IVTa9HNafAKr8jTVCmkxfSU3fxDqQEdCT80zNkQjslc4y9UnM3m03k5HXTc9tcE7HyiAKF7p3y-D7zplfFiWtx1__tw8Eay_0zGIzFKxogGxlJRHkUAxgSSTZJtYOlpbjtw8cy4e-3_RZirFdJEuIzD-vtJ8c0Nzy917dwzyqf1t_5PaiwrQRhoQJk8akZ-M8i0Q4k5yznB_AjoL3CdLHWWjKtJzaET0V6e5nWYcGvhvww" alt="Finished repaired road"/>
+                      <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3JyAUX-IVTa9HNafAKr8jTVCmkxfSU3fxDqQEdCT80zNkQjslc4y9UnM3m03k5HXTc9tcE7HyiAKF7p3y-D7zplfFiWtx1__tw8Eay_0zGIzFKxogGxlJRHkUAxgSSTZJtYOlpbjtw8cy4e-3_RZirFdJEuIzD-vtJ8c0Nzy917dwzyqf1t_5PaiwrQRhoQJk8akZ-M8i0Q4k5yznB_AjoL3CdLHWWjKtJzaET0V6e5nWYcGvhvww" alt="Verified civic resolution showing flush paved asphalt road at Main and 5th" loading="lazy" decoding="async"/>
                       <div class="absolute bottom-1 right-1 bg-surface-container-lowest/90 px-1.5 py-0.5 rounded font-label-caps text-[9px] text-tertiary font-bold flex items-center gap-1 border border-tertiary/40">
                         <span class="material-symbols-outlined text-[11px]">verified</span> VERIFIED
                       </div>
@@ -640,11 +650,11 @@
                       <!-- Dual Visual Thumbnail Comparison -->
                       <div class="grid grid-cols-2 gap-2 my-2">
                         <div class="relative rounded overflow-hidden h-20 bg-surface-container-lowest">
-                          <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1hg4UnG1gdu4NtY8pmDKxS5jGqtQz9wRjZHvJvsCmsigcv_OQnsgNmeMrn9tm9IJioEf3u4Ke9c65-49VjByxarpDei7QiPzD-Mz5Pf9B0b9Vt5AT213QW6A8unK1jJ4V4AFqjSLuG8c2f9E1PTwoRtu-XR0OQDeHeXBNWXHrMYRSLoxib2fLZgqr-HVqZbRIk2T_GXtXlmnYpi7lp8uskrq-KP_cirj_IbkkPEh9wKYE_6c9uaFM" alt="Before repair"/>
+                          <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1hg4UnG1gdu4NtY8pmDKxS5jGqtQz9wRjZHvJvsCmsigcv_OQnsgNmeMrn9tm9IJioEf3u4Ke9c65-49VjByxarpDei7QiPzD-Mz5Pf9B0b9Vt5AT213QW6A8unK1jJ4V4AFqjSLuG8c2f9E1PTwoRtu-XR0OQDeHeXBNWXHrMYRSLoxib2fLZgqr-HVqZbRIk2T_GXtXlmnYpi7lp8uskrq-KP_cirj_IbkkPEh9wKYE_6c9uaFM" alt="Historical incident capture showing pothole before repair" loading="lazy" decoding="async"/>
                           <span class="absolute bottom-1 left-1 bg-surface-container-lowest/90 px-1 py-0.2 rounded font-label-caps text-[8px] text-error font-bold">BEFORE</span>
                         </div>
                         <div class="relative rounded overflow-hidden h-20 bg-surface-container-lowest">
-                          <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOFFLEPQW6lCxcqj_f53aVlt5pZAxInjI9qZhAHyrU8oGq_yRhbBgJ3jfuOCbregVRNIEXJqNpPRgBJXx_gVuRKx4f-aacwo1CUJoEF-1d6g-m-vp-Zg4eTeGQHQTKOu2BkqgTAeuz-in3s5fLF6qXUPNRa-8rPGJBDgyFC7ruLf2pS2CzWfLyMf3yx9dQqYZGS5eHJIBCnYUedOGHbW2vpe-KQycAvYfUS-OyOhWL53EZHOt7Tk94" alt="Verified after"/>
+                          <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOFFLEPQW6lCxcqj_f53aVlt5pZAxInjI9qZhAHyrU8oGq_yRhbBgJ3jfuOCbregVRNIEXJqNpPRgBJXx_gVuRKx4f-aacwo1CUJoEF-1d6g-m-vp-Zg4eTeGQHQTKOu2BkqgTAeuz-in3s5fLF6qXUPNRa-8rPGJBDgyFC7ruLf2pS2CzWfLyMf3yx9dQqYZGS5eHJIBCnYUedOGHbW2vpe-KQycAvYfUS-OyOhWL53EZHOt7Tk94" alt="Verified resolution showing paved roadway after repair" loading="lazy" decoding="async"/>
                           <span class="absolute bottom-1 left-1 bg-surface-container-lowest/90 px-1 py-0.2 rounded font-label-caps text-[8px] text-tertiary font-bold">VERIFIED AFTER</span>
                         </div>
                       </div>
@@ -673,11 +683,11 @@
                       </div>
                       <div class="grid grid-cols-2 gap-2 my-2">
                         <div class="relative rounded overflow-hidden h-20 bg-surface-container-lowest">
-                          <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF5ZHDlBEU1UmuvT-3npX822u9YO540AazSiELyNHCNFB1G1N4sTW6HkpkfRuITha6pvJ4vhkaLgGnlRuZrL6UHQL6SqQaGiYEgsxz8m-IzdmMxlMFdGa4dOU6U-tVcqdQCQrJpAYqnDFKnLLJqfJk5PEso6fAuxsZEu0jiWrSR0-V-OQREPHsVD07yvWVvk6TbgucT2CQePBeGp3AT1sNtap1QUF3Hf1PMW730n8AQLC_azpAckZ8" alt="Tree branch"/>
+                          <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF5ZHDlBEU1UmuvT-3npX822u9YO540AazSiELyNHCNFB1G1N4sTW6HkpkfRuITha6pvJ4vhkaLgGnlRuZrL6UHQL6SqQaGiYEgsxz8m-IzdmMxlMFdGa4dOU6U-tVcqdQCQrJpAYqnDFKnLLJqfJk5PEso6fAuxsZEu0jiWrSR0-V-OQREPHsVD07yvWVvk6TbgucT2CQePBeGp3AT1sNtap1QUF3Hf1PMW730n8AQLC_azpAckZ8" alt="Storm hazard showing fallen tree branch blocking roadway lane" loading="lazy" decoding="async"/>
                           <span class="absolute bottom-1 left-1 bg-surface-container-lowest/90 px-1 py-0.2 rounded font-label-caps text-[8px] text-error font-bold">BEFORE</span>
                         </div>
                         <div class="relative rounded overflow-hidden h-20 bg-surface-container-lowest">
-                          <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_O7NhKikcY6xifcckStliChPqFUveOgU0jaHqP_Np_4XLhzaXDtHcRaJ2JTaAdVCeMnqBd7zUSkCpBkjMRGs4tqKbFD0SytqkZ8-ICoyqtjdc3XHHTT6kwAco-dO910wTLpWOqRq7RMKPo-CpOEHAE8-9qUHFkBNIHy9hBZhFFVW4uNLmVaOajcswgYxIDu_DwYhn3Yld225Mf681Cy1Pk8aHL4GdTA42GZ9URT40cvEC9KZI23Ah" alt="Cleared road"/>
+                          <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_O7NhKikcY6xifcckStliChPqFUveOgU0jaHqP_Np_4XLhzaXDtHcRaJ2JTaAdVCeMnqBd7zUSkCpBkjMRGs4tqKbFD0SytqkZ8-ICoyqtjdc3XHHTT6kwAco-dO910wTLpWOqRq7RMKPo-CpOEHAE8-9qUHFkBNIHy9hBZhFFVW4uNLmVaOajcswgYxIDu_DwYhn3Yld225Mf681Cy1Pk8aHL4GdTA42GZ9URT40cvEC9KZI23Ah" alt="Mitigated hazard showing cleared lane and trimmed branch debris" loading="lazy" decoding="async"/>
                           <span class="absolute bottom-1 left-1 bg-surface-container-lowest/90 px-1 py-0.2 rounded font-label-caps text-[8px] text-tertiary font-bold">CLEARED</span>
                         </div>
                       </div>

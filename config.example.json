@@ -1,0 +1,5 @@
+{
+  "apiUrl": "https://phi-ent-decorative-jun.trycloudflare.com",
+  "wsUrl": "ws://localhost:8000/api/v1/telemetry/ws",
+  "comment": "Copy to 'config.json' and update 'apiUrl' to your cloudflared tunnel URL (e.g. 'https://your-tunnel.trycloudflare.com') to connect your GitHub Pages frontend to your local FastAPI backend."
+}

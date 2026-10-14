@@ -39,3 +39,20 @@ env/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Test & Coverage files
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# Sensitive / Confidential Environment & Local Tunnel Configs
+.env
+.env.*
+*.env
+config.json
+*.pem
+*.key
+*.cert
+credentials.json
+token.json

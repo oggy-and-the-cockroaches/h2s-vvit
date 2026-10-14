@@ -4,6 +4,12 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <meta content="web_dashboard" name="shell-type"/>
+  <meta name="description" content="CivicPulse AI - Operational command center for real-time municipal incident detection, geographic clustering, and autonomous AI triage dispatch."/>
+  <meta name="theme-color" content="#0f131c"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta name="referrer" content="strict-origin-when-cross-origin"/>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
   <title>CivicPulse AI — Operational Command Center</title>
   
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -110,13 +116,16 @@
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen">
+  <!-- Skip to main content for WCAG 2.1 AA accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
 
   <!-- ================= TOP HEADER NAVIGATION ================= -->
-  <header class="fixed top-0 left-0 right-0 h-14 bg-surface-container-lowest/95 backdrop-blur-md z-50 shadow-[0_1px_8px_rgba(0,0,0,0.4)] border-b border-surface-container-high/40">
+  <header role="banner" class="fixed top-0 left-0 right-0 h-14 bg-surface-container-lowest/95 backdrop-blur-md z-50 shadow-[0_1px_8px_rgba(0,0,0,0.4)] border-b border-surface-container-high/40">
     <div class="h-14 w-full px-space-md flex items-center justify-between gap-space-md">
       <div class="flex items-center gap-space-lg">
         <a href="index.html" class="flex items-center gap-space-sm group">
-          <img alt="CivicPulse AI Emblem" class="h-8 w-auto object-contain transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1UXxPBiOEtEgr_bzwnKlszNaneJqf3mlOPvXUc0_YP7Apfb3AukiCXchBhbDf1cigzjq19LExR7pDe7NlXlVIpsa28OCmfaGzelMnUaSJrYx7PlxbqJWb8P_seuMtX3Kkr22X0ob57gcsbDzNbHTPQ0xCTuwTfWh3Lyj9LsXPlrghQMIYMou-HEfjMW5qpQ3W15yIIqPsCq8J4CfS4ysx3CQBWk1Wm-wkZ_2ybUkfch7LHCVF8LaWbtU3A"/>
+          <img alt="CivicPulse AI Emblem" width="32" height="32" loading="eager" decoding="async" class="h-8 w-auto object-contain transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1UXxPBiOEtEgr_bzwnKlszNaneJqf3mlOPvXUc0_YP7Apfb3AukiCXchBhbDf1cigzjq19LExR7pDe7NlXlVIpsa28OCmfaGzelMnUaSJrYx7PlxbqJWb8P_seuMtX3Kkr22X0ob57gcsbDzNbHTPQ0xCTuwTfWh3Lyj9LsXPlrghQMIYMou-HEfjMW5qpQ3W15yIIqPsCq8J4CfS4ysx3CQBWk1Wm-wkZ_2ybUkfch7LHCVF8LaWbtU3A"/>
           <div class="flex flex-col">
             <span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface uppercase leading-none group-hover:text-primary transition-colors">CivicPulse AI</span>
             <span class="font-label-caps text-label-caps text-outline uppercase mt-0.5 tracking-wider">Every report deserves a response</span>
@@ -146,11 +155,12 @@
           <div class="absolute left-space-sm text-outline flex items-center pointer-events-none">
             <span class="material-symbols-outlined text-[18px]">search</span>
           </div>
-          <input class="w-64 bg-surface-container-low font-body-sm text-body-sm text-on-surface placeholder:text-outline pl-8 pr-12 py-1 rounded border border-surface-container-high focus:outline-none focus:border-primary transition-all cursor-pointer" placeholder="Search incidents, units, telemetry..." type="text"/>
+          <label for="indexSearch" class="sr-only">Search incidents, units, telemetry</label>
+          <input id="indexSearch" aria-label="Search incidents, units, and telemetry" class="w-64 bg-surface-container-low font-body-sm text-body-sm text-on-surface placeholder:text-outline pl-8 pr-12 py-1 rounded border border-surface-container-high focus:outline-none focus:border-primary transition-all cursor-pointer" placeholder="Search incidents, units, telemetry..." type="text"/>
           <span class="absolute right-space-xs font-telemetry-meta text-[10px] text-outline bg-surface-container px-1.5 py-0.5 rounded tracking-widest font-semibold pointer-events-none">⌘K</span>
         </div>
         <div class="relative flex items-center justify-center">
-          <button aria-label="Notifications" class="p-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors relative">
+          <button aria-label="Operational alerts (3 unread)" aria-expanded="false" aria-haspopup="true" class="p-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors relative">
             <span class="material-symbols-outlined text-[20px]">notifications</span>
             <span class="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded bg-error-container text-on-error font-telemetry-meta text-[10px] font-bold ring-1 ring-background">3</span>
           </button>
@@ -169,12 +179,12 @@
   </header>
 
   <!-- ================= SIDEBAR OPERATIONAL RAIL ================= -->
-  <aside class="fixed left-0 top-14 h-[calc(100vh-3.5rem)] w-64 bg-surface-container-lowest z-40 flex flex-col justify-between py-space-sm border-r border-surface-container-high/40">
+  <aside role="complementary" aria-label="Operational Navigation Rail" class="fixed left-0 top-14 h-[calc(100vh-3.5rem)] w-64 bg-surface-container-lowest z-40 flex flex-col justify-between py-space-sm border-r border-surface-container-high/40">
     <div class="flex flex-col space-y-space-md">
       <div class="px-space-md pt-space-xs">
         <div class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Operational Rail</div>
       </div>
-      <nav class="flex flex-col gap-0.5 px-space-xs" id="mainNav">
+      <nav role="navigation" aria-label="Main platform navigation" class="flex flex-col gap-0.5 px-space-xs" id="mainNav">
         <a href="index.html" class="nav-link flex items-center gap-space-sm px-space-sm py-2 rounded text-body-sm font-body-sm transition-colors bg-primary-container text-on-primary-container font-semibold" data-page="index">
           <span class="material-symbols-outlined text-[18px]">dashboard</span>
           <span>Command Center</span>
@@ -227,7 +237,7 @@
 
   <!-- ================= MAIN COMMAND COCKPIT ================= -->
   <div class="pl-64">
-    <main class="relative pt-14 w-full bg-surface min-h-screen">
+    <main id="main-content" role="main" class="relative pt-14 w-full bg-surface min-h-screen">
       <div class="flex flex-col w-full">
         <!-- Top Command Telemetry Header -->
         <div class="px-space-md py-space-sm bg-surface-container-lowest flex flex-col md:flex-row md:items-center justify-between gap-space-sm border-b border-surface-container-high/40">
@@ -473,13 +483,13 @@
 
               <!-- Tactical Controls Overlay (Zoom / Re-center) -->
               <div class="absolute top-16 right-4 z-20 flex flex-col gap-1 bg-surface-container-lowest/90 p-1 rounded shadow border border-surface-container-high/40">
-                <button onclick="CivicToast.show('GIS Zoom', 'Zoom level increased 1.25x.', 'zoom_in', 'primary')" class="w-8 h-8 flex items-center justify-center bg-surface-container hover:bg-surface-bright text-on-surface rounded" title="Zoom in">
+                <button onclick="CivicToast.show('GIS Zoom', 'Zoom level increased 1.25x.', 'zoom_in', 'primary')" class="w-8 h-8 flex items-center justify-center bg-surface-container hover:bg-surface-bright text-on-surface rounded" title="Zoom in" aria-label="Zoom in on map">
                   <span class="material-symbols-outlined text-[18px]">add</span>
                 </button>
-                <button onclick="CivicToast.show('GIS Zoom', 'Zoom level reduced 0.75x.', 'zoom_out', 'primary')" class="w-8 h-8 flex items-center justify-center bg-surface-container hover:bg-surface-bright text-on-surface rounded" title="Zoom out">
+                <button onclick="CivicToast.show('GIS Zoom', 'Zoom level reduced 0.75x.', 'zoom_out', 'primary')" class="w-8 h-8 flex items-center justify-center bg-surface-container hover:bg-surface-bright text-on-surface rounded" title="Zoom out" aria-label="Zoom out on map">
                   <span class="material-symbols-outlined text-[18px]">remove</span>
                 </button>
-                <button onclick="CivicToast.show('Extents Reset', 'Map re-centered to Sector North centroid.', 'crop_free', 'secondary')" class="w-8 h-8 flex items-center justify-center bg-surface-container hover:bg-surface-bright text-on-surface rounded" title="Reset Map Extents">
+                <button onclick="CivicToast.show('Extents Reset', 'Map re-centered to Sector North centroid.', 'crop_free', 'secondary')" class="w-8 h-8 flex items-center justify-center bg-surface-container hover:bg-surface-bright text-on-surface rounded" title="Reset Map Extents" aria-label="Reset map view extents">
                   <span class="material-symbols-outlined text-[18px]">crop_free</span>
                 </button>
               </div>
@@ -602,13 +612,13 @@
               <!-- Evidence Photo Gallery Previews -->
               <div class="grid grid-cols-2 gap-2 mb-space-sm">
                 <a href="incident-intelligence.html" class="relative group cursor-pointer overflow-hidden rounded bg-surface-container h-24 border border-surface-container-high/50 block">
-                  <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgNJMMGUpG7y-D-zVldv5x8Gs4MKZXqDZS0O0P4ypTCV_Hk3-j7jVz0HsiH3ANkqoll8l2LVQWOjEGhApUtZ-J6ZYdOMqY-XvYwfe5-OHdytkNYUpkwvzX0NDhMnr21McFJmFc_oEQIHA5qYHY17jWiaft12lHo9KU6lURPiPR2o1w_xlioiDSDeYaWlkeCCZ9AFQ79-PZKHNfIF-AA63IeWMRufxUf0HXlgPBEA9rjMhN4OcShI3i" alt="Close up photo of high voltage line"/>
+                  <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgNJMMGUpG7y-D-zVldv5x8Gs4MKZXqDZS0O0P4ypTCV_Hk3-j7jVz0HsiH3ANkqoll8l2LVQWOjEGhApUtZ-J6ZYdOMqY-XvYwfe5-OHdytkNYUpkwvzX0NDhMnr21McFJmFc_oEQIHA5qYHY17jWiaft12lHo9KU6lURPiPR2o1w_xlioiDSDeYaWlkeCCZ9AFQ79-PZKHNfIF-AA63IeWMRufxUf0HXlgPBEA9rjMhN4OcShI3i" alt="Close up forensic photo of high-voltage line on sidewalk" loading="lazy" decoding="async"/>
                   <div class="absolute bottom-1 left-1.5 px-1 bg-surface-container-lowest/80 font-telemetry-meta text-[9px] text-on-surface rounded">
                     CAM-01 • 14:02:11
                   </div>
                 </a>
                 <a href="incident-intelligence.html" class="relative group cursor-pointer overflow-hidden rounded bg-surface-container h-24 border border-surface-container-high/50 block">
-                  <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgiqgIFSa55HHoFO5EgUDNR8Lw9KvOFe-MfuLs5R3QohWxahgBGCGcInR8GhvqYR1FmXCkCIUqVEhYXLF0aqEslePX1tAfxzgF6E3vt-3Q9Of8vW7bdDR5uMAIpXA0HlrojnZiowbOXwJSB1Ljw1H3l7r9zqbATckeoaYj2oNFRQuMNqkUJjFZ1YHj48o5BD55GgovqXCvX0toWz4NE8lnSnfkU6Ouf9NbKY4_kGsqESD_jGui0Onc" alt="Wide contextual photo of incident perimeter"/>
+                  <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgiqgIFSa55HHoFO5EgUDNR8Lw9KvOFe-MfuLs5R3QohWxahgBGCGcInR8GhvqYR1FmXCkCIUqVEhYXLF0aqEslePX1tAfxzgF6E3vt-3Q9Of8vW7bdDR5uMAIpXA0HlrojnZiowbOXwJSB1Ljw1H3l7r9zqbATckeoaYj2oNFRQuMNqkUJjFZ1YHj48o5BD55GgovqXCvX0toWz4NE8lnSnfkU6Ouf9NbKY4_kGsqESD_jGui0Onc" alt="Wide contextual photo of incident perimeter and pedestrian corridor" loading="lazy" decoding="async"/>
                   <div class="absolute bottom-1 left-1.5 px-1 bg-surface-container-lowest/80 font-telemetry-meta text-[9px] text-on-surface rounded">
                     CAM-02 • 14:08:45
                   </div>
